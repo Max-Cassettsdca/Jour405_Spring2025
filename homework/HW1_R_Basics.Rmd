@@ -14,79 +14,91 @@ In this task, you will learn about the R programming language and write basic R 
 ## Assign x to 1, y to 2 and z to 3
 
 Put your code inside the block below, then click the green arrow to run your code.
-
-{x<- 1} 
-{y <- 2} 
-{z <- 3}
-
+```{r}
+x <- 1
+#{y <- 2} 
+#{z <- 3}
+```
 
 ### 1.2: Functions
 
 A function is code that produces some result, like printing. The function for printing is `print()`, with what you want to see printed inside the parentheses, usually in quotes, unless we're printing a variable or a number. Then, no quotes.
 
 ## Have R print Hello World
+```{r}
+print("Hello World")
 
-{print("Hello World")}
-
-
+```
 
 ## Have R print the number 42
+```{r}
+print(42)
 
-{print(42)}
-
-
+```
 
 ### 1.3: Computations
 
 R can do math, too, which is very necessary for statistics. Let's have it - not you - do the math.
 
 ## Add 17 to 5
-
+```{r}
 {17+5}
-
+```
 
 ## Add 5 to x (remember x from above?)
-
-{x+5}
-
-
+```{r}
+x+5
+`
+```
 
 ## Add 15 to 5 and store it in a variable called n
-
-{n <- 15+5}
-
+```{r}
+n <- 15+5
+```
 
 
 ## Find the square root of 16 and store it in a variable called p.
 
 You'll need to look up the function to calculate a square root.
-
-{p <- sqrt(16) }
-
+```{r}
+p <- sqrt(16)
+```
 
 ## Calling variable in R
 
 Calling variables means just typing the variable name in a code block and running it.
 
 Call y, see y value in console
-
-{y}
-
+```{r}
+y
+```
 
 Call x, see x value in console
-
-{x}
-
+```{r}
+x
+```
 
 ### 1.4: Using the Tidyverse Library
 
 We'll be using different tools in order to work with data and generate statistics, and the main one is the tidyverse. You will be using that library in every assignment. Let's make sure it's loaded using R's `library()` function:
 
 ## Load the tidyverse
+```{r}
+library (tidyverse)
+students <- read_csv("data/students.csv", na = c("N/A", ""))
 
-library(tidyverse)
-library(tidyverse)
+students
+#> # A tibble: 6 × 5
+#>   `Student ID` `Full Name`      favourite.food     mealPlan            AGE  
+#>          <dbl> <chr>            <chr>              <chr>               <chr>
+#> 1            1 Sunil Huffmann   Strawberry yoghurt Lunch only          4    
+#> 2            2 Barclay Lynn     French fries       Lunch only          5    
+#> 3            3 Jayendra Lyne    <NA>               Breakfast and lunch 7    
+#> 4            4 Leon Rossini     Anchovies          Lunch only          <NA> 
+#> 5            5 Chidiegwu Dunkel Pizza              Breakfast and lunch five 
+#> 6            6 Güvenç Attila    Ice cream          Lunch only          6
 
+```
 
 ## Task Two: Data Structures in R: Data frames
 
