@@ -77,6 +77,7 @@ PG County's auto crimes out do the number of robberies, assaults and sex crimes,
 
 Residents in PG county might be teased on the dangerous reputation of their community but the truth might suprise you. The amount of crimes involving motor vehicles far outweigh those that do not. Crimes that pertain to accidents on the road way take fourth and first place, but between the two with similar numbers are auto theft and theft from a vehicle. What are stragedies that criminals use to rob you of your vehicle and from theirs? What emboldens them to do so and why are they so successful? more on that below.
 
+
 ### Task 9: Save Your Work and Put it on GitHub
 
 Save this notebook, then commit it to your local repository. Push the changes to your GitHub repository and submit the URL for this file in ELMS.
