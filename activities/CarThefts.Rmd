@@ -6,23 +6,56 @@ Follow along with the demo to learn how to calculate standard deviation and how 
 
 ### Task 1: Load the tidyverse
 
+```{r}
+library(tidyverse)
+```
 
 ### Task 2: Load the car thefts dataset from https://raw.githubusercontent.com/dwillis/jour405/refs/heads/main/data/car_thefts_jan24.csv
+
+```{r}
+car_thefts<- read_csv("https://raw.githubusercontent.com/dwillis/jour405/refs/heads/main/data/car_thefts_jan24.csv")
+```
+
 
 
 ### Task 3: Calculate the standard deviation of the number of car thefts, along with the mean
 
+```{r}
+car_theft_stats <- car_thefts %>% 
+  summarize( mean_thefts = mean(count, na.rm = TRUE), 
+             sd_thefts = sd(count, na.rm = TRUE) )
+             
+```
+
+Had to chat gpt this one too. Took a bit to get it to give me a good answert but this is my understanding of what is happening in this code and why. I'm taking the csv (car thefts) and I'm making a new chart (car theft stats). Im using pipeline from all that so that I'm editing car_theft_stats, and I'm summerizing it, more speciically im taking the information in the old chart which is now in the new chart and im finding the mean thefts and the standard deviation of thefts.
+
 
 ### Task 4: Create a histogram of the number of car thefts
 
+```{r}
+ggplot(car_thefts, aes(x = count)) + geom_histogram(binwidth = 1, fill = "blue", color = "black") + labs(title = "Histogram of Car Thefts", x = "Number of Car Thefts", y = "Frequency") + theme_minimal() 
+
+```
+
+OK so this was another chat gpt one and it drove me up a freaking wall. SO i wanted to create a histogram where the x was the count and the Y was the date. For some reason that wouldnt work but Chat Gpt gave me this code and I understand what its doing but i dont want it to do what its doing. Over the month of January there were as much as 15 car thefts per day. 
 
 ### Task 5: Add a line to the histogram that shows the mean of the number of car thefts
+
+
+```{r}
+mean_thefts <- mean(car_thefts$count, na.rm = TRUE) 
+ggplot(car_thefts, aes(x = count))+ geom_histogram(binwidth = 1, fill = "blue", color = "black")+ geom_vline(aes(xintercept = mean_thefts), color = "red", linetype = "dashed", size = 1) + labs(title = "Histogram of Car Thefts", x = "Number of Car Thefts", y = "Frequency") + theme_minimal()
+
+```
+One again using our friend chat GPt to find what code creates a line. I actually love using chat gpt because i feel like I learn it better when I'm reversing whats being done rather then just brute force guessing until i guess something right. Whats happening is we added a geom_vline where the X intercept of the mean thefts are. DO the mean number of thefts for any given day was about 13. 
+
 
 
 ### Task 6: Describe your results
 
 Is the distribution normal or skewed in one direction? Write a sentence in which you describe the range of the data covered by one standard deviation from the mean on both sides.
 
+Standard deviation being the average distance from the average of the data. I'd say it is scewed to the higher side. There is more likely to be more car thefts in a day than less car thefts in the data set. I'm not sure if I understand how i would describe the the range of the data covered by one standard deviation from the mean on both sides. I'm frankly pretty confused on what that means.
 
 
 When you are done, save your work, switch to GitHub Desktop, then add, commit and push your changes to GitHub and submit the URL of the notebook in ELMS.
