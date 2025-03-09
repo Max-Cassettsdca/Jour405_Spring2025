@@ -77,3 +77,36 @@ Although cities like Baltimore and Salisbury have the highest crime numbers in t
 ### Task 9: Save Your Work and Put it on GitHub
 
 Save this notebook, then commit it to your local repository. Push the changes to your GitHub repository and submit the URL for this file in ELMS.
+
+
+Task 10
+
+sing the 2020 violent crime rate, calculate the percentiles using `ntile()`. Save the results to a new dataframe called `md_cities_percentiles`. How many cities are above the 90th percentile?
+```{r}
+
+
+
+md_cities_percentiles <- md_cities_rates |>
+  mutate(
+ violent_rate_2020 = ntile(violent2020, 100))
+
+```
+
+Calculate the Interquartile Range of the 2020 violent crime rate using `summarize()` and R's `IQR()` function. The syntax is similar to how `mean()` works.
+```{r}
+
+crime_summary <- md_cities_rates %>% 
+summarize( mean_violent_2020 = mean(violent_rate_2020, na.rm = TRUE), 
+iqr_violent_2020 = IQR(violent_rate_2020, na.rm = TRUE) )
+
+```
+
+I had to Chat GPT this because i wasnt in class to learn it and I'm feeling pretty lost. As far as I understand, im making a table called crime_summary with md_cities_rates info, and what im doing with that infor is i'm summerizing the mean and making a column for the mean that will tell me what the mean is and the interquartile range. The mean is the middle number of all the crime aka the average, and the interquartile range is the dispersion of the data. 
+
+
+Do the results change your best story idea from the previous assignment? Why or why not?
+
+I dont think this effects the story much but my understanding of all this is REALLy loose.
+
+
+
