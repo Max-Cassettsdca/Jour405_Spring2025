@@ -1,31 +1,81 @@
----
 title: "HW7_MandMs"
 ---
 
 In this assignment, you'll be picking up where you left off with the M&Ms activity. You'll load the data and perform some basic statistical analysis. Follow the steps below to complete the assignment.
 
 ### Task 1: Load the tidyverse
-
+```{r}
+library(tidyverse)
+```
 
 ### Task 2: Load the M&Ms dataset from https://raw.githubusercontent.com/dwillis/jour405/refs/heads/main/data/mandms.csv
 
-
-### Task 3: Sample 5 rows of data from the dataset
-
-
-### Task 4: Calculate the mean age and standard deviation of the sample, using either the blue or white number of M&Ms
+```{r}
+mmdataset<-read_csv("https://raw.githubusercontent.com/dwillis/jour405/refs/heads/main/data/mandms.csv")
 
 
-### Task 5: Calculate the mean age and standard deviation of the population, using the same measure as in Task 4
+```
+
+### Task 3: Sample 5 rows of data from the dataset, and then sample 10 rows, saving each to separate dataframes called sample5 and sample10.
+
+```{r}
+sample5 <- mmdataset %>% sample_n(5) 
+
+sample10 <- mmdataset %>% sample_n(10) 
+```
+
+I'm not 100% sure how ths works, I had to chat gpt it but I think I can take a crack at it. the samples were made from the mm data set, and were picked randomly i suppose. I hadnt known about that code before so I had to look it up but after staring at it for a bit it makes perfect sense.
+
+### Task 4: Calculate the mean and standard deviation of the samples, using one of the colors.
+
+```{r}
+sample5_sd_red <- sample5 %>% 
+  summarize(sd_red = sd(red, na.rm = TRUE))
+
+sample10_sd_black <- sample10 %>% 
+  summarize(sd_black = sd(black, na.rm = TRUE))
+            
+```
+Had to google this one again and look at the previuos homeworks but I mean the code makes sense. youre creating a new table from each sample table which is piping back to its own infor and summerizing it by finding the standard deviation for a collumns information. 
+
+
+### Task 5: Calculate the mean and standard deviation of the population, using the same color as Task 4
+gonna go with red.
+
+```{r}
+sample5<- sample5|>
+  mutate(
+    red_sample_mean = mean(red),
+    red_sample_sd =sd(red)
+  )
+```
+
+I cant believe I got to the point where I'm getting this and I'm playing around with the code but this last one wasnt so bad. If i wanted to make something cleaner i could summarize it but I wanted it all to be in the same place.
 
 
 ### Task 6: Compare the sample and population statistics
 
-Compare the two sets of means and standard deviations. Are they similar?
+Compare the three sets of means and standard deviations. Are they similar?
+
+
+```{r}
+
+sample10<- sample10|>
+  mutate(
+    red_sample_mean = mean(red),
+    red_sample_sd =sd(red)
+  )
+
+```
+
+I think that with the larger group we got a more accurate reading but even with the two smaller groups, it wasnt to far off. The means were all very similar, becoming more similar the higher the sample size was. The stanfard deviation stayed around the mid to high teens the whole way.
+
 
 ### Task 7: Describe the results
 
 Write a few sentences about what you found in the data. What does this tell you about the M&Ms dataset and about the act of random sampling?
+
+That even when sampling randomly its possible to get the gist of whats going one, but to get an accurate reading its better to have a larger sample size.
 
 
 When finished, save your work, switch to GitHub Desktop, then add, commit and push your changes to GitHub and submit the URL of the notebook in ELMS.
