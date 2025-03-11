@@ -62,8 +62,10 @@ Compare the three sets of means and standard deviations. Are they similar?
 
 sample10<- sample10|>
   mutate(
+    
     red_sample_mean = mean(red),
     red_sample_sd =sd(red)
+    
   )
 
 ```
