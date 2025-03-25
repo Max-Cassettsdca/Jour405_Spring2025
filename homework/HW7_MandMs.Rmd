@@ -19,8 +19,8 @@ mmdataset<-read_csv("https://raw.githubusercontent.com/dwillis/jour405/refs/head
 ### Task 3: Sample 5 rows of data from the dataset, and then sample 10 rows, saving each to separate dataframes called sample5 and sample10.
 
 ```{r}
-sample5 <- mmdataset %>% sample_n(5) 
 
+sample5 <- mmdataset %>% sample_n(5) 
 sample10 <- mmdataset %>% sample_n(10) 
 ```
 
