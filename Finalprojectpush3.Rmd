@@ -1,0 +1,30 @@
+Null Hypotheses: Although more people from traditionally blue states (Ex. California and New York)  are moving to traditionally red states (Ex.Texas and Florida) there is no change in the amount of democrats elected to local and state government. 
+
+Alternative Hypotheses:
+In parallel with more people from traditionally blue states (Ex. California and New York), moving to traditionally red states (Ex.Texas and Florida) there is a change in the amount of democrats elected to local, state, and national government. 
+
+
+Data on current and previous state senators, governors and top ten most populous cities mayors in Florida and Texas
+
+Mayors (changing the data from top 20 to top 10):
+https://docs.google.com/spreadsheets/d/1ci6LJOURQVQ7FWz2B8OG9T-oH5D8XhWY2HGEV5DRW8M/edit?usp=sharing 
+
+Texas State Legislature (house and senate):
+https://docs.google.com/spreadsheets/d/1-Rzc5ZVVH54WMsPzyYjJVrHeElRU_AnsTA7JFaSQdA8/edit?usp=sharing 
+
+Florida State Legislature (house and senate):
+https://docs.google.com/spreadsheets/d/1gOztyuGi8CWKIISKwmHnYSL04H3HMo-svO7owENLCnk/edit?usp=sharing 
+
+Data of immigration from California and New York to Texas and Florida
+
+https://docs.google.com/spreadsheets/d/1lPZTKmp6fJzUK_c56XqLZP1D5jaMB9MI4GIAN16mygk/edit?usp=sharing 
+
+https://www.census.gov/data/tables/time-series/demo/geographic-mobility/state-to-state-migration.html 
+
+^These statistics need work and I’ll get on on them pronto. I will sue this second link that I’ve found instead of relying on the AI links because their a bit dodgy. It will take a bit of time but the google sheet should be up to date by tuesday. This link that I've put below my spreadsheet is like a treasure trove for state to state migration. I've just got to find a way to get it onto R or in a spreadsheet. 
+
+I think I've covered all my abses with the data I need. I have my hypotheses, and I have the immigration/emmigration data from the blue states to the red states, and I have the data for local and state goverment.
+
+The only thing I'm worried about is that I'm not doing enough work. I use AI to help me find sources and organize the data in some cases, but I dont just take its word for it, which is why I feel the need to redo the emmigration sheet. Let me know if there are any thoughts on how I can improve this projet or take it to another level.
+
+I think the most important part of my analysis will be the goveremnt records of wether or not a republican or democrat is in office or not. Solely because that will decide whether or not the state is being tangibly effected by these transplants. I've mad the span of my study ten years, from my research the big push out to these red states began around 2019 so thats where I expect to start seeing a change in leadership affiliation. 
