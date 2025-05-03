@@ -51,7 +51,7 @@ In the middle, you can see the (Intercept) is 59.57897 and the FARMS coefficient
 
 Based on what you've learned so far, is this model worth using? What does it tell us about the nature of the relationship between FARMS percentage and math scores?
 
-ANSWER HERE
+There is no statisitcally significanvce to the study with the numbers weve seen thus far.
 
 ### Task: Identifying Schools with Biggest Residuals (2 points)
 
