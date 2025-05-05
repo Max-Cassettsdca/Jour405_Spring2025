@@ -6,6 +6,23 @@ Final Project Code Tests
 library(tidyverse)
 ```
 
+```{r}
+library(tidyverse)
+
+migration_data <- read_csv()
+//Immigration and Emmigration Information
+
+migration_long <- migration_data |>
+  pivot_longer(
+    cols = -Year,
+    names_to = "route",
+    values_to = "people"
+  ) |>
+  separate(route, into = c("origin", "destination"), sep = "_to_") |>
+  mutate(people = as.numeric(gsub(",", "", people)))
+```
+
+
 Tx and Fl outflow
 https://docs.google.com/spreadsheets/d/1lPZTKmp6fJzUK_c56XqLZP1D5jaMB9MI4GIAN16mygk/edit?gid=0#gid=0
 
