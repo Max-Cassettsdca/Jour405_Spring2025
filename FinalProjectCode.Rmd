@@ -7,9 +7,19 @@ library(tidyverse)
 ```
 
 ```{r}
+Texas-Govoners <- read_csv(Texas_Govoner_Elections_Sheet1)
+```
+
+
+```{r}
+i_and_e <- read_csv("Immigration_and Emmigration_Information_Sheet_1_1.csv")
+```
+
+
+```{r}
 library(tidyverse)
 
-migration_data <- read_csv(Immigration_and_Emmigration_Information_Sheet1_1_)
+migration_data <- read_csv("imeminfo.csv")
 
 migration_long <- migration_data |>
   pivot_longer(
@@ -108,6 +118,17 @@ ggplot(df, aes(x = year, y = people_leaving, color = migration_path)) +
   ///
 model <- lm(`` ~ ``, data = immigrationxvotingrecords)
 
-summary(model
+summary(model)
   ///
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
