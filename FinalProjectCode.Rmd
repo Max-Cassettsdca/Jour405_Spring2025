@@ -11,6 +11,8 @@ Texas-Govoners <- read_csv(Texas_Govoner_Elections_Sheet1)
 ```
 
 
+
+
 ```{r}
 i_and_e <- read_csv("Immigration_and Emmigration_Information_Sheet_1_1.csv")
 ```
@@ -31,36 +33,12 @@ migration_long <- migration_data |>
   mutate(people = as.numeric(gsub(",", "", people)))
 ```
 
-
-Tx and Fl outflow
-https://docs.google.com/spreadsheets/d/1lPZTKmp6fJzUK_c56XqLZP1D5jaMB9MI4GIAN16mygk/edit?gid=0#gid=0
-
-full pres:
-https://docs.google.com/spreadsheets/d/1-qFD6nCKMpt-UxaKu598xZPXiU-1hyUZvsreL04UA0o/edit?gid=0#gid=0
-
-fl pres:
-https://docs.google.com/spreadsheets/d/1SVgWu_jg_QKvHcO13Hbti6-TLN208hoVOuP6wyneIpE/edit?usp=sharing
-
-tx pres:
-https://docs.google.com/spreadsheets/d/1h0c2wZY4_qwDzMrGhGiQnPc6cS7bESyv-v8EjSS6wLs/edit?gid=0#gid=0
-
-Gov:
-https://docs.google.com/spreadsheets/d/1ZKYb7V_GUohisvh3IZDJmyiaC7jDaBPSnYVoWhRSWlE/edit?gid=0#gid=0
-
-fl gov:
-https://docs.google.com/spreadsheets/d/1Nu8HFbZx1atdlHhCACj3b6du93iIIN6ESMQosT34Qfs/edit?gid=0#gid=0
-
-Tx gov:
-https://docs.google.com/spreadsheets/d/1cT7eLxNOilaN_8v3B7qGdyjA9Hsg1-qqops4NZ1UIX8/edit?gid=0#gid=0
-
-
-https://docs.google.com/spreadsheets/d/1-qFD6nCKMpt-UxaKu598xZPXiU-1hyUZvsreL04UA0o/edit?gid=0#gid=0
-
-
 ```{r}
 outflow_data<-read.csv(Immigration_and_Emmigration_Information_Sheet1_2)
 
 ```
+```{r}
+
 
 tx_pres|>
   
@@ -86,7 +64,7 @@ fl_gov|>
 ggplot(aes(x = year))+
   geom_histogram(binwidth = 0.02, fill= "blue", color= "orange") + 
   labs(title= "Democrat Vote Count in Gubernatorial Elections in FL", x= "Year", y= "vote count")
-  
+```  
   
   
 immigration_data|>
@@ -94,6 +72,8 @@ immigration_data|>
 what I'm trying to figrue out here is how I can make 4 lines on a line graph to show all four paths being taken. SO one for each states migration to the other state. THe x would be the the year and the y would be the number of people leaving.
 
 belopw is what AI spit out when i put it in.
+
+
 
 library(ggplot2)
 
