@@ -37,6 +37,8 @@ migration_long <- migration_data |>
 outflow_data<-read.csv(Immigration_and_Emmigration_Information_Sheet1_2)
 
 ```
+
+
 ```{r}
 
 
