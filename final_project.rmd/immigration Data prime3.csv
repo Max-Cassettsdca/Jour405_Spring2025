@@ -1,0 +1,177 @@
+Year,Region,State,Total Returns,Top Origin 1,Returns 1,Top Origin 2,Returns 2,Top Origin 3,Returns 3,Top Origin 4,Returns 4
+2012,West,Oklahoma,42183,Texas,10381,Arkansas,2909,Kansas,2932,Missouri,2068
+2012,West,Nebraska,20216,Iowa,3087,Colorado,1467,Texas,1427,California,1374
+2012,Mid-Atlantic,Virginia,119231,Maryland,12836,North Carolina,10956,Florida,11067,New York,7645
+2012,Mid-Atlantic,Maryland,79647,Virginia,12836,District of Columbia,9434,Pennsylvania,7258,Florida,6006
+2012,Northeast,Massachusetts,67822,New York,8673,Florida,7851,New Hampshire,6121,Connecticut,4924
+2012,Northeast,New York,167262,New Jersey,25516,Florida,25658,Pennsylvania,13422,California,13473
+2012,Northeast,New Jersey,90339,New York,25516,Pennsylvania,13519,Florida,10383,California,3994
+2012,South,Texas,263008,California,27381,Florida,32967,Louisiana,13431,Oklahoma,10628
+2012,South,Florida,308884,New York,33519,Georgia,26495,Texas,19369,New Jersey,14835
+2012,South,South Carolina,68514,North Carolina,12208,Georgia,8710,Florida,7305,New York,4138
+2012,Pacific,California,253909,Texas,21828,Arizona,18138,Washington,16446,Nevada,15728
+2012,Pacific,Oregon,53736,California,12838,Washington,11105,Arizona,2538,Texas,2107
+2012,Pacific,Arizona,98730,California,18897,Texas,6402,Washington,5451,Colorado,4405
+2012,Midwest,Missouri,61299,Kansas,9601,Illinois,8117,Texas,4353,California,3525
+2012,Midwest,Indiana,58375,Illinois,10609,Florida,5178,Kentucky,5183,Ohio,4703
+2012,Midwest,Illinois,103645,Indiana,8869,Wisconsin,6940,Missouri,6434,Florida,8141
+2013,West,Oklahoma,"40,068",Texas,"10,628",Arkansas,"2,713",California,"2,573",Kansas,"2,275"
+2013,West,Nebraska,"21,385",Iowa,"2,884",Colorado,"1,831",Texas,"1,766",California,"1,277"
+2013,Mid-Atlantic,Virginia,"119,369",Maryland,"12,625",North Carolina,"12,157",Florida,"12,086",California,"7,846"
+2013,Mid-Atlantic,Maryland,"81,624",Virginia,"12,836",District of Columbia,"8,842",Pennsylvania,"7,086",Florida,"7,285"
+2013,Northeast,Massachusetts,"72,255",New York,"8,032",Florida,"9,781",New Hampshire,"6,983",California,"6,602"
+2013,Northeast,New York,209490,New Jersey,30974,Florida,33519,California,16661,Pennsylvania,15880
+2013,Northeast,New Jersey,107415,New York,30974,Pennsylvania,15907,Florida,14835,California,5777
+2013,South,Texas,199440,California,21828,Florida,19369,Oklahoma,10381,Louisiana,10326
+2013,South,Florida,302232,New York,33519,Georgia,29485,Texas,19369,New Jersey,14835
+2013,South,South Carolina,58463,North Carolina,11326,Georgia,7849,Florida,6595,New York,2761
+2013,Pacific,California,252373,Texas,27381,Arizona,18897,Washington,17062,Nevada,19313
+2013,Pacific,Oregon,48458,California,9747,Washington,11902,Arizona,2824,Texas,2251
+2013,Pacific,Arizona,88221,California,18138,Texas,7770,Colorado,4572,Washington,4438
+2013,Midwest,Missouri,65421,Kansas,9450,Illinois,6434,Texas,5980,Florida,4589
+2013,Midwest,Indiana,62068,Illinois,8869,Florida,6668,Kentucky,5134,Ohio,4643
+2013,Midwest,Illinois,127660,Indiana,10609,Wisconsin,8862,Missouri,8117,Florida,11859
+2014,West,Oklahoma,"40,404",Texas,"10,628",Arkansas,"2,713",California,"2,573",Kansas,2275
+2014,West,Nebraska,"21,385",Iowa,"2,884",Colorado,"1,831",Texas,"1,766",California,1277
+2014,Mid-Atlantic,Virginia,"119,369",Maryland,"12,625",North Carolina,"12,157",Florida,"12,086",California,7846
+2014,Mid-Atlantic,Maryland,81624,Virginia,12836,District of Columbia,8842,Pennsylvania,7086,Florida,7285
+2014,Northeast,Massachusetts,72255,New York,8032,Florida,9781,New Hampshire,6983,California,6602
+2014,Northeast,New York,209490,New Jersey,30974,Florida,33519,California,16661,Pennsylvania,15880
+2014,Northeast,New Jersey,107415,New York,30974,Pennsylvania,15907,Florida,14835,California,5777
+2014,South,Texas,199440,California,21828,Florida,19369,Oklahoma,10381,Louisiana,10326
+2014,South,Florida,302232,New York,33519,Georgia,29485,Texas,19369,New Jersey,14835
+2014,South,South Carolina,58463,North Carolina,11326,Georgia,7849,Florida,6595,New York,2761
+2014,Pacific,California,252373,Texas,27381,Arizona,18897,Washington,17062,Nevada,19313
+2014,Pacific,Oregon,48458,California,9747,Washington,11902,Arizona,2824,Texas,2251
+2014,Pacific,Arizona,88221,California,18138,Texas,7770,Colorado,4572,Washington,4438
+2014,Midwest,Missouri,65421,Kansas,9450,Illinois,6434,Texas,5980,Florida,4589
+2014,Midwest,Indiana,62068,Illinois,8869,Florida,6668,Kentucky,5134,Ohio,4643
+2014,Midwest,Illinois,127660,Indiana,10609,Wisconsin,8862,Missouri,8117,Florida,11859
+2015,West,Oklahoma,38329,Texas,9977,Arkansas,2611,Kansas,2486,Missouri,1833
+2015,West,Nebraska,20041,Iowa,3064,Colorado,1711,Texas,1546,California,1411
+2015,Mid-Atlantic,Virginia,124720,Maryland,15139,North Carolina,11176,Florida,10365,California,8441
+2015,Mid-Atlantic,Maryland,82812,Virginia,15139,District of Columbia,10123,Pennsylvania,7319,Florida,5458
+2015,Northeast,Massachusetts,71254,New York,9126,Florida,6879,New Hampshire,6328,California,5658
+2015,Northeast,New York,155894,New Jersey,23922,Florida,18426,California,15101,Pennsylvania,11445
+2015,Northeast,New Jersey,94805,New York,23922,Pennsylvania,13628,Florida,7927,California,4361
+2015,South,Texas,252595,California,34526,Florida,19103,Louisiana,13881,Oklahoma,10407
+2015,South,Florida,307196,New York,34975,Georgia,20825,Texas,17631,New Jersey,16471
+2015,South,South Carolina,81003,North Carolina,15537,Georgia,7873,Florida,7090,New York,5419
+2015,Pacific,California,256021,Texas,23416,Arizona,14685,Washington,16163,Nevada,13290
+2015,Pacific,Oregon,67796,California,19311,Washington,12435,Arizona,2843,Texas,2876
+2015,Pacific,Arizona,119298,California,27982,Texas,7791,Colorado,6044,Washington,6983
+2015,Midwest,Missouri,65313,Kansas,11339,Illinois,8469,Texas,4888,California,4019
+2015,Midwest,Indiana,63955,Illinois,12903,Florida,5341,Ohio,5223,Michigan,4441
+2015,Midwest,Illinois,99923,Indiana,8320,Wisconsin,6991,Missouri,6936,Florida,7357
+2016,West,Oklahoma,40404,Texas,10628,Arkansas,2713,California,2573,Kansas,2275
+2016,West,Nebraska,21385,Iowa,2884,Colorado,1831,Texas,1766,California,1277
+2016,Mid-Atlantic,Virginia,119369,Maryland,12625,North Carolina,12157,Florida,12086,California,7846
+2016,Mid-Atlantic,Maryland,81624,Virginia,12836,District of Columbia,8842,Pennsylvania,7086,Florida,7285
+2016,Northeast,Massachusetts,72255,New York,8032,Florida,9781,New Hampshire,6983,California,6602
+2016,Northeast,New York,209490,New Jersey,30974,Florida,33519,California,16661,Pennsylvania,15880
+2016,Northeast,New Jersey,107415,New York,30974,Pennsylvania,15907,Florida,14835,California,5777
+2016,South,Texas,199440,California,21828,Florida,19369,Oklahoma,10381,Louisiana,10326
+2016,South,Florida,302232,New York,33519,Georgia,29485,Texas,19369,New Jersey,14835
+2016,South,South Carolina,58463,North Carolina,11326,Georgia,7849,Florida,6595,New York,2761
+2016,Pacific,California,252373,Texas,27381,Arizona,18897,Washington,17062,Nevada,19313
+2016,Pacific,Oregon,48458,California,9747,Washington,11902,Arizona,2824,Texas,2251
+2016,Pacific,Arizona,88221,California,18138,Texas,7770,Colorado,4572,Washington,4438
+2016,Midwest,Missouri,65421,Kansas,9450,Illinois,6434,Texas,5980,Florida,4589
+2016,Midwest,Indiana,62068,Illinois,8869,Florida,6668,Kentucky,5134,Ohio,4643
+2016,Midwest,Illinois,127660,Indiana,10609,Wisconsin,8862,Missouri,8117,Florida,11859
+2017,West,Oklahoma,37341,Texas,10044,Arkansas,2576,Kansas,2595,California,2649
+2017,West,Nebraska,20242,Iowa,3118,Colorado,1739,Texas,1556,California,1435
+2017,Mid-Atlantic,Virginia,116389,Maryland,15013,North Carolina,10295,Florida,9025,California,7532
+2017,Mid-Atlantic,Maryland,77041,Virginia,15013,District of Columbia,9352,Pennsylvania,6946,Florida,4659
+2017,Northeast,Massachusetts,65086,New York,8593,Florida,5610,New Hampshire,5782,California,5070
+2017,Northeast,New York,142722,New Jersey,21427,Florida,15411,California,13532,Pennsylvania,10570
+2017,Northeast,New Jersey,81037,New York,21427,Pennsylvania,11982,Florida,6324,California,3712
+2017,South,Texas,246864,California,30052,Florida,18299,Louisiana,12976,Oklahoma,10515
+2017,South,Florida,307022,New York,15411,Georgia,20057,Texas,18299,New Jersey,16840
+2017,South,South Carolina,74198,North Carolina,14199,Georgia,7247,Florida,6043,New York,5108
+2017,Pacific,California,250076,Texas,24257,Arizona,14852,Washington,14167,Nevada,12970
+2017,Pacific,Oregon,68276,California,19217,Washington,11642,Arizona,2947,Texas,3115
+2017,Pacific,Arizona,104431,California,21581,Texas,7831,Colorado,5275,Washington,4905
+2017,Midwest,Missouri,60846,Kansas,10678,Illinois,7813,Texas,5112,Florida,2805
+2017,Midwest,Indiana,56431,Illinois,11011,Florida,4023,Kentucky,4915,Ohio,4719
+2017,Midwest,Illinois,94410,Indiana,11011,Wisconsin,6666,Missouri,6521,Texas,6941
+2018,West,Oklahoma,38329,Texas,9977,Arkansas,2611,Kansas,2486,Missouri,1833
+2018,West,Nebraska,20041,Iowa,3064,Colorado,1711,Texas,1546,California,1411
+2018,Mid-Atlantic,Virginia,124720,Maryland,15139,North Carolina,11176,Florida,10365,California,8441
+2018,Mid-Atlantic,Maryland,82812,Virginia,15139,District of Columbia,10123,Pennsylvania,7319,Florida,5458
+2018,Northeast,Massachusetts,71254,New York,9126,Florida,6879,New Hampshire,6328,California,5658
+2018,Northeast,New York,155894,New Jersey,23922,Florida,18426,California,15101,Pennsylvania,11445
+2018,Northeast,New Jersey,94805,New York,23922,Pennsylvania,13628,Florida,7927,California,4361
+2018,South,Texas,252595,California,34526,Florida,19103,Louisiana,13881,Oklahoma,10407
+2018,South,Florida,307196,New York,34975,Georgia,20825,Texas,17631,New Jersey,16471
+2018,South,South Carolina,81003,North Carolina,15537,Georgia,7873,Florida,7090,New York,5419
+2018,Pacific,California,256021,Texas,23416,Arizona,14685,Washington,16163,Nevada,13290
+2018,Pacific,Oregon,67796,California,19311,Washington,12435,Arizona,2843,Texas,2876
+2018,Pacific,Arizona,119298,California,27982,Texas,7791,Colorado,6044,Washington,6983
+2018,Midwest,Missouri,65313,Kansas,11339,Illinois,8469,Texas,4888,California,4019
+2018,Midwest,Indiana,63955,Illinois,12903,Florida,5341,Ohio,5223,Michigan,4441
+2018,Midwest,Illinois,99923,Indiana,8320,Wisconsin,6991,Missouri,6936,Florida,7357
+2019,West,Oklahoma,40068,Texas,10628,Arkansas,2713,California,2573,Kansas,2275
+2019,West,Nebraska,21385,Iowa,2884,Colorado,1831,Texas,1766,California,1277
+2019,Mid-Atlantic,Virginia,119369,Maryland,12625,North Carolina,12157,Florida,12086,California,7846
+2019,Mid-Atlantic,Maryland,81624,Virginia,12836,District of Columbia,8842,Pennsylvania,7086,Florida,7285
+2019,Northeast,Massachusetts,72255,New York,8032,Florida,9781,New Hampshire,6983,California,6602
+2019,Northeast,New York,209490,New Jersey,30974,Florida,33519,California,16661,Pennsylvania,15880
+2019,Northeast,New Jersey,107415,New York,30974,Pennsylvania,15907,Florida,14835,California,5777
+2019,South,Texas,199440,California,21828,Florida,19369,Oklahoma,10381,Louisiana,10326
+2019,South,Florida,302232,New York,33519,Georgia,29485,Texas,19369,New Jersey,14835
+2019,South,South Carolina,58463,North Carolina,11326,Georgia,7849,Florida,6595,New York,2761
+2019,Pacific,California,252373,Texas,27381,Arizona,18897,Washington,17062,Nevada,19313
+2019,Pacific,Oregon,48458,California,9747,Washington,11902,Arizona,2824,Texas,2251
+2019,Pacific,Arizona,88221,California,18138,Texas,7770,Colorado,4572,Washington,4438
+2019,Midwest,Missouri,65421,Kansas,9450,Illinois,6434,Texas,5980,Florida,4589
+2019,Midwest,Indiana,62068,Illinois,8869,Florida,6668,Kentucky,5134,Ohio,4643
+2019,Midwest,Illinois,127660,Indiana,10609,Wisconsin,8862,Missouri,8117,Florida,11859
+2020,West,Oklahoma,38329,Texas,9977,Arkansas,2611,Kansas,2486,Missouri,1833
+2020,West,Nebraska,20041,Iowa,3064,Colorado,1711,Texas,1546,California,1411
+2020,Mid-Atlantic,Virginia,124720,Maryland,15139,North Carolina,11176,Florida,10365,California,8441
+2020,Mid-Atlantic,Maryland,82812,Virginia,15139,District of Columbia,10123,Pennsylvania,7319,Florida,5458
+2020,Northeast,Massachusetts,71254,New York,9126,Florida,6879,New Hampshire,6328,California,5658
+2020,Northeast,New York,155894,New Jersey,23922,Florida,18426,California,15101,Pennsylvania,11445
+2020,Northeast,New Jersey,94805,New York,23922,Pennsylvania,13628,Florida,7927,California,4361
+2020,South,Texas,252595,California,34526,Florida,19103,Louisiana,13881,Oklahoma,10407
+2020,South,Florida,307196,New York,34975,Georgia,20825,Texas,17631,New Jersey,16471
+2020,South,South Carolina,81003,North Carolina,15537,Georgia,7873,Florida,7090,New York,5419
+2020,Pacific,California,256021,Texas,23416,Arizona,14685,Washington,16163,Nevada,13290
+2020,Pacific,Oregon,67796,California,19311,Washington,12435,Arizona,2843,Texas,2876
+2020,Pacific,Arizona,119298,California,27982,Texas,7791,Colorado,6044,Washington,6983
+2020,Midwest,Missouri,65313,Kansas,11339,Illinois,8469,Texas,4888,California,4019
+2020,Midwest,Indiana,63955,Illinois,12903,Florida,5341,Ohio,5223,Michigan,4441
+2020,Midwest,Illinois,99923,Indiana,8320,Wisconsin,6991,Missouri,6936,Florida,7357
+2021,West,Oklahoma,40068,Texas,10628,Arkansas,2713,California,2573,Kansas,2275
+2021,West,Nebraska,21385,Iowa,2884,Colorado,1831,Texas,1766,California,1277
+2021,Mid-Atlantic,Virginia,119369,Maryland,12625,North Carolina,12157,Florida,12086,California,7846
+2021,Mid-Atlantic,Maryland,81624,Virginia,12836,District of Columbia,8842,Pennsylvania,7086,Florida,7285
+2021,Northeast,Massachusetts,72255,New York,8032,Florida,9781,New Hampshire,6983,California,6602
+2021,Northeast,New York,209490,New Jersey,30974,Florida,33519,California,16661,Pennsylvania,15880
+2021,Northeast,New Jersey,107415,New York,30974,Pennsylvania,15907,Florida,14835,California,5777
+2021,South,Texas,199440,California,21828,Florida,19369,Oklahoma,10381,Louisiana,10326
+2021,South,Florida,302232,New York,33519,Georgia,29485,Texas,19369,New Jersey,14835
+2021,South,South Carolina,58463,North Carolina,11326,Georgia,7849,Florida,6595,New York,2761
+2021,Pacific,California,252373,Texas,27381,Arizona,18897,Washington,17062,Nevada,19313
+2021,Pacific,Oregon,48458,California,9747,Washington,11902,Arizona,2824,Texas,2251
+2021,Pacific,Arizona,88221,California,18138,Texas,7770,Colorado,4572,Washington,4438
+2021,Midwest,Missouri,65421,Kansas,9450,Illinois,6434,Texas,5980,Florida,4589
+2021,Midwest,Indiana,62068,Illinois,8869,Florida,6668,Kentucky,5134,Ohio,4643
+2021,Midwest,Illinois,127660,Indiana,10609,Wisconsin,8862,Missouri,8117,Florida,11859
+2022,West,Oklahoma,47743,Texas,11557,California,5069,Arkansas,2938,Kansas,2581
+2022,West,Nebraska,21974,Iowa,3108,Colorado,2162,Texas,1644,California,1590
+2022,Mid-Atlantic,Virginia,133320,Maryland,15104,North Carolina,12070,Florida,11342,California,9500
+2022,Mid-Atlantic,Maryland,82299,Virginia,15104,District of Columbia,10005,Pennsylvania,7334,Florida,5495
+2022,Northeast,Massachusetts,77764,New York,10004,Florida,6985,New Hampshire,6131,Connecticut,5895
+2022,Northeast,New York,177619,New Jersey,24960,Florida,18948,California,19656,Pennsylvania,13101
+2022,Northeast,New Jersey,109235,New York,24960,Pennsylvania,16196,Florida,7976,California,4958
+2022,South,Texas,327817,California,54136,Florida,22277,Louisiana,16310,Oklahoma,10188
+2022,South,Florida,398307,New York,51967,Georgia,24383,Texas,21221,New Jersey,23128
+2022,South,South Carolina,101296,North Carolina,17933,Georgia,8996,Florida,8412,New York,8087
+2022,Pacific,California,254935,Texas,23316,Arizona,16115,Washington,18275,Nevada,14518
+2022,Pacific,Oregon,68554,California,19288,Washington,12358,Arizona,3295,Texas,3198
+2022,Pacific,Arizona,130273,California,32864,Texas,8008,Washington,9204,Colorado,6230
+2022,Midwest,Missouri,73289,Kansas,11813,Illinois,8753,Texas,5603,California,5029
+2022,Midwest,Indiana,69272,Illinois,13099,Florida,6394,Kentucky,5691,Ohio,5389
+2022,Midwest,Illinois,110797,Indiana,9007,Wisconsin,7792,Missouri,7648,Florida,7973

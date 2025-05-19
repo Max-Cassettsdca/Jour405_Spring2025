@@ -1,0 +1,17 @@
+Region,State,Total Returns,Top Origin 1,Returns 1,Top Origin 2,Returns 2,Top Origin 3,Returns 3,Top Origin 4,Returns 4
+West,Oklahoma,42183,Texas,10381,Arkansas,2909,Kansas,2932,Missouri,2068
+West,Nebraska,20216,Iowa,3087,Colorado,1467,Texas,1427,California,1374
+Mid-Atlantic,Virginia,119231,Maryland,12836,North Carolina,10956,Florida,11067,New York,7645
+Mid-Atlantic,Maryland,79647,Virginia,12836,District of Columbia,9434,Pennsylvania,7258,Florida,6006
+Northeast,Massachusetts,67822,New York,8673,Florida,7851,New Hampshire,6121,Connecticut,4924
+Northeast,New York,167262,New Jersey,25516,Florida,25658,Pennsylvania,13422,California,13473
+Northeast,New Jersey,90339,New York,25516,Pennsylvania,13519,Florida,10383,California,3994
+South,Texas,263008,California,27381,Florida,32967,Louisiana,13431,Oklahoma,10628
+South,Florida,308884,New York,33519,Georgia,26495,Texas,19369,New Jersey,14835
+South,South Carolina,68514,North Carolina,12208,Georgia,8710,Florida,7305,New York,4138
+Pacific,California,253909,Texas,21828,Arizona,18138,Washington,16446,Nevada,15728
+Pacific,Oregon,53736,California,12838,Washington,11105,Arizona,2538,Texas,2107
+Pacific,Arizona,98730,California,18897,Texas,6402,Washington,5451,Colorado,4405
+Midwest,Missouri,61299,Kansas,9601,Illinois,8117,Texas,4353,California,3525
+Midwest,Indiana,58375,Illinois,10609,Florida,5178,Kentucky,5183,Ohio,4703
+Midwest,Illinois,103645,Indiana,8869,Wisconsin,6940,Missouri,6434,Florida,8141

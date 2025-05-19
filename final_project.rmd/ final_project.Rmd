@@ -7,7 +7,11 @@ library(tidyverse)
 ```
 
 ```{r}
-Texas-Govoners <- read_csv(Texas_Govoner_Elections_Sheet1)
+immigration <- read_csv("imeminfo.csv")
+tx_gov  <- read_csv("Florida Govoner Elections - Sheet1.csv")
+fl_gov <- read.csv("Texas Govoner Elections - Sheet1.csv")
+fl_pres <- read_csv("FL_Pres - Sheet1.csv")
+tx_pres <- read_csv("TX_Pres - Sheet1.csv")
 ```
 
 

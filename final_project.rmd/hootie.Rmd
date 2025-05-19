@@ -1,0 +1,83 @@
+# Load required libraries
+
+
+library(tidyverse)
+```{r}
+list.files()
+setwd("/Users/maxcassett/GitHub/Jour405_Spring2025/final_project.rmd")
+```
+
+# Define your target states and regions
+
+```{r}
+
+target_states <- list(
+  West = c("Oklahoma", "Nebraska"),
+  `Mid-Atlantic` = c("Virginia", "Maryland"),
+  Northeast = c("Massachusetts", "New York", "New Jersey"),
+  South = c("Texas", "Florida", "South Carolina"),
+  Pacific = c("California", "Oregon", "Arizona"),
+  Midwest = c("Missouri", "Indiana", "Illinois")
+)
+
+```
+
+
+```{r}
+library(readr)
+
+info_2011_2012 <- read_csv("y2k11.csv")
+info_2012_2013 <- read_csv("y2k12.csv")
+info_2013_2014 <- read_csv("y2k13.csv")
+info_2014_2015 <- read_csv("y2k14.csv")
+info_2015_2016 <- read_csv("y2k15.csv")
+info_2016_2017 <- read_csv("y2k16.csv")
+info_2017_2018 <- read_csv("y2k17.csv")
+info_2018_2019 <- read_csv("y2k18.csv")
+info_2019_2020 <- read_csv("y2k19.csv")
+info_2020_2021 <- read_csv("y2k20.csv")
+info_2021_2022 <- read_csv("y2k21.csv")
+
+```
+
+
+```{r}
+library(tidyverse)
+
+# Load your data (replace "y2k21.csv" with your file)
+df <- read_csv("y2k21.csv")
+
+# Reshape the data (no conflicts)
+df_long <- df %>%
+  pivot_longer(
+    cols = starts_with("Top Origin"),
+    names_to = "Rank",
+    values_to = "Origin_State"
+  )
+
+# View the result
+head(df_long)
+
+```
+
+```{r}
+df_long %>%
+  filter(State == "Texas") %>%
+  arrange(Rank)
+
+df %>%
+  select(State, `Total Returns`) %>%
+  arrange(desc(`Total Returns`))
+
+df %>%
+  group_by(Region) %>%
+  summarise(Total_Returns = sum(`Total Returns`, na.rm = TRUE)) %>%
+  arrange(desc(Total_Returns))
+
+ggplot(df, aes(x = reorder(State, `Total Returns`), y = `Total Returns`, fill = Region)) +
+  geom_col() +
+  coord_flip() +
+  labs(title = "Total Returns by State", x = "State", y = "Total Returns")
+
+```
+

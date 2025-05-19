@@ -1,0 +1,277 @@
+```{r}
+install.packages("tidyverse") # Only run this line ONCE
+library(tidyverse)
+
+library(scales)  # This gives you the comma() function
+
+
+```
+
+
+
+
+```{r}
+# Read the CSV (adjust the path if needed)
+migration <- read_csv("immigration Data prime2.csv")
+
+# Remove commas and convert numeric columns
+migration <- migration %>%
+  mutate(across(contains("Returns"), ~ as.numeric(gsub(",", "", .))))
+
+```
+
+
+
+
+```{r}
+migration_long <- migration %>%
+  pivot_longer(
+    cols = matches("Top Origin \\d|Returns \\d"),
+    names_to = c(".value", "Rank"),
+    names_pattern = "(Top Origin|Returns) (\\d)",
+    values_drop_na = TRUE
+  ) %>%
+  mutate(Rank = as.integer(Rank))
+
+```
+
+
+
+
+
+Total Returns by State and Year
+```{r}
+# Table: Total returns by state, each year
+state_year_totals <- migration %>%
+  select(Year, State, `Total Returns`) %>%
+  arrange(Year, desc(`Total Returns`))
+print(state_year_totals)
+
+```
+
+
+
+
+
+
+Top Origins for Texas Over Time
+```{r}
+# Table: Top origins for Texas by year
+texas_origins <- migration_long %>%
+  filter(State == "Texas") %>%
+  select(Year, Rank, `Top Origin`, Returns) %>%
+  arrange(Year, Rank)
+print(texas_origins)
+
+```
+
+
+
+
+Plot: Total Inflow to Texas Over Time
+```{r}
+ggplot(migration %>% filter(State == "Texas"),
+       aes(x = as.integer(Year), y = `Total Returns`)) +
+  geom_line(size = 1.2, color = "steelblue") +
+  geom_point(size = 2, color = "steelblue") +
+  labs(title = "Total Inflow Returns to Texas (2012–2022)",
+       x = "Year", y = "Total Returns") +
+  theme_minimal()
+```
+
+
+
+
+
+
+Top Origins for Texas and Florida and South Carolina
+```{r}
+ggplot(migration_long %>% filter(State == "Texas"),  # Remove Year filter
+       aes(x = reorder(`Top Origin`, -Returns), y = Returns, fill = factor(Rank))) +
+  geom_col() +
+  facet_wrap(~ Year, ncol = 3) +  # Create separate panel for each year 
+  labs(title = "Top 4 Origins for Texas (2012-2022)",
+       subtitle = "Migration Returns by Origin State",
+       x = "Origin State", y = "Returns", fill = "Rank") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))  # Rotate labels for better readability
+
+
+ggplot(migration_long %>% filter(State == "Florida"),  # Remove Year filter
+       aes(x = reorder(`Top Origin`, -Returns), y = Returns, fill = factor(Rank))) +
+  geom_col() +
+  facet_wrap(~ Year, ncol = 3) +  # Create separate panel for each year 
+  labs(title = "Top 4 Origins for Florida (2012-2022)",
+       subtitle = "Migration Returns by Origin State",
+       x = "Origin State", y = "Returns", fill = "Rank") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))  # Rotate labels for better readability
+
+ggplot(migration_long %>% filter(State == "South Carolina"),  # Remove Year filter
+       aes(x = reorder(`Top Origin`, -Returns), y = Returns, fill = factor(Rank))) +
+  geom_col() +
+  facet_wrap(~ Year, ncol = 3) +  # Create separate panel for each year 
+  labs(title = "Top 4 Origins for South Carolina (2012-2022)",
+       subtitle = "Migration Returns by Origin State",
+       x = "Origin State", y = "Returns", fill = "Rank") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))  # Rotate labels for better readability
+
+```
+
+
+
+
+!!!Regional Migration Trends Line!!!
+```{r}
+
+migration <- read_csv("immigration Data prime3.csv") %>%
+  mutate(`Total Returns` = as.numeric(gsub(",", "", `Total Returns`)))
+
+region_trends <- migration %>%
+  group_by(Year, Region) %>%
+  summarise(Total_Returns = sum(`Total Returns`, na.rm = TRUE), .groups = "drop")
+
+ggplot(region_trends, aes(x = as.integer(Year), y = Total_Returns, color = Region)) +
+  geom_line(size = 1.5) +
+  geom_point(size = 3) +
+  scale_y_continuous(labels = comma) +
+  scale_color_brewer(palette = "Set2") +
+  labs(
+    title = "Migration Trends by Region (2012–2022)",
+    subtitle = "Total IRS Returns by Region, 2012–2022",
+    x = "Year",
+    y = "Total Returns",
+    color = "Region"
+  ) +
+  theme_minimal(base_size = 15) +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    plot.title = element_text(face = "bold"),
+    legend.position = "right"
+  )
+
+```
+
+Region Trends code
+```{r}
+region_trends <- migration %>%
+  group_by(Region, Year) %>%
+  summarise(Total_Returns = sum(`Total Returns`, na.rm = TRUE), .groups = "drop") %>%
+  arrange(Region, Year) %>%
+  group_by(Region) %>%
+  mutate(Pct_Change = 100 * (Total_Returns - lag(Total_Returns)) / lag(Total_Returns))
+```
+
+
+!!!A percentage change line of the regions by year!!!
+```{r}
+# 1. Load libraries
+library(tidyverse)
+library(scales)
+
+# 2. Read and clean your data
+migration <- read_csv("immigration Data prime3.csv") %>%
+  mutate(`Total Returns` = as.numeric(gsub(",", "", `Total Returns`)))
+
+# 3. Summarize and calculate percent change by region
+region_trends <- migration %>%
+  group_by(Region, Year) %>%
+  summarise(Total_Returns = sum(`Total Returns`, na.rm = TRUE), .groups = "drop") %>%
+  arrange(Region, Year) %>%
+  group_by(Region) %>%
+  mutate(Pct_Change = 100 * (Total_Returns - lag(Total_Returns)) / lag(Total_Returns))
+
+# 4. Plot percent change by region (use ggplot, not gplot)
+ggplot(region_trends, aes(x = Year, y = Pct_Change, color = Region)) +
+  geom_line(linewidth = 1.5) +
+  geom_point(size = 3) +
+  scale_y_continuous(labels = percent_format(scale = 1)) +
+  scale_color_brewer(palette = "Set2") +
+  labs(
+    title = "Year-over-Year % Change in Total Returns by Region",
+    x = "Year",
+    y = "Percent Change",
+    color = "Region"
+  ) +
+  theme_minimal(base_size = 15) +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    plot.title = element_text(face = "bold")
+  )
+
+```
+
+
+!!!A linear regression line of just texas!!!
+```{r}
+library(tidyverse)
+
+# Load required packages
+library(tidyverse)
+library(scales)
+
+# Read and clean data
+migration <- read_csv("immigration Data prime3.csv") %>%
+  mutate(
+    Year = as.numeric(Year),
+    `Total Returns` = as.numeric(gsub(",", "", `Total Returns`))
+  )
+
+# Filter for Texas data
+texas_data <- migration %>% 
+  filter(State == "Texas")
+
+# Create linear regression plot
+ggplot(texas_data, aes(x = Year, y = `Total Returns`)) +
+  geom_point(size = 3, color = "steelblue") +          # Scatter plot
+  geom_smooth(method = "lm", se = FALSE, color = "firebrick") +  # Regression line
+  scale_y_continuous(labels = comma) +                 # Format y-axis
+  labs(
+    title = "Texas Migration Trends (2012-2022)",
+    subtitle = "Linear Regression of Total Returns",
+    x = "Year",
+    y = "Total Returns"
+  ) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(face = "bold", size = 14),
+    axis.title = element_text(size = 12)
+  )
+
+# Optional: Show regression statistics
+lm_model <- lm(`Total Returns` ~ Year, data = texas_data)
+summary(lm_model)
+
+
+```
+
+!!!A linear regression line of all the regions!!! 
+```{r}
+library(tidyverse)
+library(scales)
+
+# Read and clean data
+migration <- read_csv("immigration Data prime3.csv") %>%
+  mutate(`Total Returns` = as.numeric(gsub(",", "", `Total Returns`)))
+
+region_yearly <- migration %>%
+  group_by(Region, Year) %>%
+  summarise(Total_Returns = sum(`Total Returns`, na.rm = TRUE), .groups = "drop")
+
+# Plot with linear regression for each region
+ggplot(region_yearly, aes(x = Year, y = Total_Returns, color = Region)) +
+  geom_point(size = 3) +
+  geom_smooth(method = "lm", se = FALSE, linetype = "dashed", linewidth = 1.2) +
+  scale_y_continuous(labels = comma, breaks = seq(0, 900000, 50000), limits = c(0, 850000)) +
+  labs(
+    title = "Linear Regression of Total Returns by Region (2012–2022)",
+    x = "Year",
+    y = "Total Returns"
+  ) +
+  theme_minimal(base_size = 15) +
+  theme(legend.position = "right")
+
+```
+
+
