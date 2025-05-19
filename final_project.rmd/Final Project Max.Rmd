@@ -1,0 +1,364 @@
+Alright folks, I've made a few of these files but this one is going to be the last. I'll walk you guys through everything for my sake and yours because its hard to understand and I'm the gu putting it together 
+
+
+```{r}
+library(tidyverse)
+library(scales)
+```
+I used perplexity AI alot in forming my code and organizing my google sheets and in the code its recommended I use scales.
+
+
+I dont know why it makes me do the full path for this specific file and the most recent throwaway file I've made but honestly I'm so done with fighting R to take my data that I've decided to take it as a sign to just do it the way that works even if it looks bad
+```{r}
+# Migration Data
+migration <- read_csv("GitHub/Jour405_Spring2025/final_project.rmd/immigration Data prime3.csv") %>%
+  mutate(across(contains("Returns"), ~as.numeric(gsub(",", "", .))))
+
+# Texas Election Data
+tx_elections <- read_csv("~/GitHub/Jour405_Spring2025/final_project.rmd/TX_Pres - Sheet1.csv", skip = 1,
+                        col_names = c("Year", "Democrat", "Republican")) %>%
+  mutate(State = "Texas") %>%
+  mutate(across(c(Democrat, Republican), ~as.numeric(gsub(",", "", .))))
+
+# Florida Election Data
+fl_elections <- read_csv("~/GitHub/Jour405_Spring2025/final_project.rmd/FL_Pres - Sheet1.csv", skip = 1,
+                        col_names = c("Year", "Democrat", "Republican")) %>%
+  mutate(State = "Florida") %>%
+  mutate(across(c(Democrat, Republican), ~as.numeric(gsub(",", "", .))))
+```
+
+What I've done is set the data up so that I have certain states (2 or 3) for each region. The west, south, northeast, mid-atlantic, pacific, and midwest. As you'll see when you play the code, the south has been raking people left and write, and even when you go for percentage change instead of by populaiton (because obviously a region with only two states will likely get less people than three states), you'll see that the south, specifically Florida and Texas have been getting a ton of people. I'm not sure if those models counts as a linear regression models because they have trend lines. but either way their very helpful in seeing the trend.
+```{r}
+elections <- bind_rows(tx_elections, fl_elections)
+
+
+region_trends <- migration %>%
+  group_by(Region, Year) %>%
+  summarise(Total_Returns = sum(`Total Returns`, na.rm = TRUE), .groups = "drop")
+
+ggplot(region_trends, aes(x = Year, y = Total_Returns, color = Region)) +
+  geom_point(size = 3) +
+  geom_smooth(method = "lm", se = FALSE) +
+  scale_y_continuous(labels = comma) +
+  labs(title = "Regional Migration Trends", x = "Year", y = "Total Returns") +
+  theme_minimal()
+
+# Calculate percentage change by region
+region_pct_change <- migration %>%
+  group_by(Region, Year) %>%
+  summarise(Total_Returns = sum(`Total Returns`, na.rm = TRUE), .groups = "drop") %>%
+  group_by(Region) %>%
+  arrange(Year) %>%
+  mutate(Percent_Change = 100 * (Total_Returns - lag(Total_Returns)) / lag(Total_Returns)) %>%
+  filter(!is.na(Percent_Change))  # Remove first year with NA
+
+# Plot percentage change
+ggplot(region_pct_change, aes(x = Year, y = Percent_Change, color = Region)) +
+  geom_point(size = 3) +
+  geom_smooth(method = "lm", se = FALSE) +
+  scale_y_continuous(labels = scales::percent_format(scale = 1)) +
+  labs(title = "Regional Migration Trends (Year-over-Year % Change)",
+       x = "Year", 
+       y = "Percentage Change in Returns") +
+  theme_minimal()
+
+```
+
+I've made a box plot to show the variation between number of people coming into each region for every year.As expected no one comes close to the south.
+
+```{r}
+ggplot(merged_data, aes(x = factor(Year), y = `Total Returns`, fill = Region)) +
+  geom_boxplot(outlier.shape = 21, outlier.size = 2, outlier.color = "black") +
+  scale_y_continuous(
+    labels = scales::label_number(scale_cut = scales::cut_short_scale()),
+    expand = expansion(mult = c(0.05, 0.1))
+  ) +
+  labs(
+    title = "Distribution of Migration Inflows by Region and Year",
+    x = "Year",
+    y = "Total Migration Returns"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(
+    legend.position = "right",
+    axis.text.x = element_text(angle = 45, hjust = 1)
+  )
+
+```
+
+
+
+
+This shows us as a whole where inflow is tredning (up or down) as a whole of the states we picked. Not very inportant to the grand scheme of thing but it is trending up (the year is the slope for some reason).
+```{r}
+lm(Percent_Change ~ Year, data = region_pct_change)
+
+```
+
+Since the south is bringing in so many people lets see where these people are coming from.
+```{r}
+ggplot(migration_long %>% filter(State == "Texas"),  # Remove Year filter
+       aes(x = reorder(`Top Origin`, -Returns), y = Returns, fill = factor(Rank))) +
+  geom_col() +
+  facet_wrap(~ Year, ncol = 3) +  # Create separate panel for each year 
+  labs(title = "Top 4 Origins for Texas (2012-2022)",
+       subtitle = "Migration Returns by Origin State",
+       x = "Origin State", y = "Returns", fill = "Rank") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))  # Rotate labels for better readability
+
+
+ggplot(migration_long %>% filter(State == "Florida"),  # Remove Year filter
+       aes(x = reorder(`Top Origin`, -Returns), y = Returns, fill = factor(Rank))) +
+  geom_col() +
+  facet_wrap(~ Year, ncol = 3) +  # Create separate panel for each year 
+  labs(title = "Top 4 Origins for Florida (2012-2022)",
+       subtitle = "Migration Returns by Origin State",
+       x = "Origin State", y = "Returns", fill = "Rank") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))  # Rotate labels for better readability
+
+ggplot(migration_long %>% filter(State == "South Carolina"),  # Remove Year filter
+       aes(x = reorder(`Top Origin`, -Returns), y = Returns, fill = factor(Rank))) +
+  geom_col() +
+  facet_wrap(~ Year, ncol = 3) +  # Create separate panel for each year 
+  labs(title = "Top 4 Origins for South Carolina (2012-2022)",
+       subtitle = "Migration Returns by Origin State",
+       x = "Origin State", y = "Returns", fill = "Rank") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))  # Rotate labels for better readability
+
+```
+
+
+It looks like a lot of people are leaving california and new york. I made a graph of the starting year (2012) and the ending year (2022) to show the change in how many people were leaving where. And this graph shows that California and new york are losing people to states like texas and florida like crazy.
+```{r}
+migration_long <- migration %>%
+  pivot_longer(
+    cols = matches("Top Origin \\d|Returns \\d"),
+    names_to = c(".value", "Rank"),
+    names_pattern = "(Top Origin|Returns) (\\d)",
+    values_drop_na = TRUE
+  )
+top_corridors_2022 <- migration_long %>%
+  filter(Year == 2022) %>%
+  group_by(`Top Origin`, State) %>%
+  summarise(Total = sum(Returns), .groups = "drop") %>%
+  arrange(desc(Total)) %>%
+  head(10)
+
+ggplot(top_corridors_2022, aes(x = reorder(paste(`Top Origin`, "→", State), Total), y = Total)) +
+  geom_col(fill = "steelblue") +
+  coord_flip() +
+  labs(title = "Top 10 Migration Corridors (2022)", x = NULL, y = "Returns") +
+  theme_minimal()
+
+top_corridors_2012 <- migration_long %>%
+  filter(Year == 2012) %>%
+  group_by(`Top Origin`, State) %>%
+  summarise(Total = sum(Returns), .groups = "drop") %>%
+  arrange(desc(Total)) %>%
+  head(10)
+
+ggplot(top_corridors_2012, aes(x = reorder(paste(`Top Origin`, "→", State), Total), y = Total)) +
+  geom_col(fill = "steelblue") +
+  coord_flip() +
+  labs(title = "Top 10 Migration Corridors (2012)", x = NULL, y = "Returns") +
+  theme_minimal()
+```
+
+
+Since we've established the flordia and texas are the big fish in this game lets see wher they rank among eachother in how many people the rake in and on what scale.
+
+It looks like florida is much more consistent in how many people it bring in on a yearly basis, and if i understand the chart correctly, Florid is also bringing in more people overall. The T-test proves this as well.
+```{r}
+tx <- migration %>% filter(State == "Texas") %>% pull(`Total Returns`)
+fl <- migration %>% filter(State == "Florida") %>% pull(`Total Returns`)
+
+tibble(
+  State = rep(c("Texas", "Florida"), c(length(tx), length(fl))),
+  Returns = c(tx, fl)
+) %>%
+  ggplot(aes(x = State, y = Returns, fill = State)) +
+  geom_boxplot() +
+  labs(title = "Migration Comparison: Texas vs Florida") +
+  scale_fill_manual(values = c("steelblue", "orange")) +
+  theme_minimal()
+
+tx <- migration %>% filter(State == "Texas") %>% pull(`Total Returns`)
+fl <- migration %>% filter(State == "Florida") %>% pull(`Total Returns`)
+t_test <- t.test(tx, fl)
+print(t_test)
+```
+
+
+Just for kicks and gigles lets runa a t-test to see if theres a statisitcally significant difference in the amount of people either florida dn texas are bringing in. And while we're at it we'll through in an anova test to make sure that we're not just making up the fact that the south is brining people in.
+
+Well look at that, there is a statistically significant difference in migration inflows between Texas and Florida, and thats proven through the small p-value, florida is the winner by the way garnering over 313,360 people over texas'235,698. 
+
+The same can be said about the regional difference. The p-value is tiny (2e-16), making the findings significant meaning we reject the null hypothesis, meaning the south is on the up and up.
+
+```{r}
+# Merge migration and elections for Texas and Florida
+combined_data <- migration %>%
+  filter(State %in% c("Texas", "Florida")) %>%
+  left_join(elections, by = c("State", "Year"))
+
+
+t_test <- t.test(tx, fl)
+print(t_test)
+
+anova_result <- aov(`Total Returns` ~ Region, data = migration)
+summary(anova_result)
+```
+
+
+So what I've done to make this all a little more interesting is i've cataloged the income tax rate for every state involved in this expierment in between our timeline (including changes to income tax rate). In the next few graphs you'll see wether or not theirs anything significant there or if there's a correlation or not.
+
+
+
+
+
+
+This model tests whether states with lower income tax rates see higher migration inflows. Because theres a big negative coefficent for tax rate, its proven that higher income tax rates are correlated to lower migration inflow.
+```{r}
+lm1 <- lm(`Total Returns` ~ TaxRate, data = merged_data)
+summary(lm1)
+```
+
+
+
+Lets start off by looking at the income tax rates for the big fish.
+
+Interesting, nothing going on for florida and texas and 6.85/9.30 coming out of NY and CA
+```{r}
+# Tax rates for key states (2012–2022)
+merged_data %>% 
+  filter(State %in% c("Texas", "Florida", "California", "New York")) %>% 
+  distinct(State, TaxRate)
+```
+
+
+
+
+Tax Rate vs. Migration Inflow Scatterplot
+
+This model istn fun to look at put it shows us the dominance of the two states with no income tax. Power house states like new york and california are the exception in most cases but even in these graphs we see that over time new york falls a little by the wayside while california tries to stay strong.
+```{r}
+library(tidyverse)
+library(scales)
+
+# Load and clean migration data
+migration <- read_csv("GitHub/Jour405_Spring2025/final_project.rmd/immigration Data prime3.csv") %>%
+  mutate(across(contains("Returns"), ~as.numeric(gsub(",", "", .))))
+
+# Load and clean tax data
+tax_rates <- read_csv("GitHub/Jour405_Spring2025/final_project.rmd/Income_tax_pct - Sheet1.csv") %>%
+  pivot_longer(-State, names_to = "Year", values_to = "TaxRate") %>%
+  mutate(Year = as.numeric(Year),
+         TaxRate = as.numeric(TaxRate))
+
+# Merge datasets on State and Year
+merged <- migration %>%
+  inner_join(tax_rates, by = c("State", "Year"))
+
+# Filter for every 2 years (even years)
+merged_2yr <- merged %>% filter(Year %% 2 == 0)
+
+
+
+ggplot(merged_2yr, aes(x = TaxRate, y = `Total Returns`, color = Region, label = State)) +
+  geom_point(size = 3, alpha = 0.8) +
+  geom_text(aes(label = State), hjust = 1.1, vjust = 0.5, size = 2.5, check_overlap = TRUE) +
+  scale_y_continuous(labels = comma) +
+  scale_x_continuous(breaks = pretty_breaks()) +
+  facet_wrap(~Year, ncol = 3) +
+  labs(
+    title = "Migration Inflows vs. Income Tax Rate by State (Every 2 Years)",
+    x = "Income Tax Rate (%)",
+    y = "Total Migration Returns",
+    color = "Region"
+  ) +
+  theme_minimal()
+
+
+```
+
+
+
+High-Tax vs. No-Tax State Comparison:
+
+This graph i very interesting if I do say so myself. It's statiscal proof that states with no income tax are receiving way more people than those with. 
+
+The proof is quite obviusly in the pudding here.
+```{r}
+merged_data %>%
+  mutate(NoTax = ifelse(TaxRate == 0, "No Income Tax", "Income Tax")) %>%
+  ggplot(aes(x = NoTax, y = `Total Returns`, fill = NoTax)) +
+  geom_boxplot() +
+  labs(title = "Migration Inflows: No-Tax vs. Tax States") +
+  scale_fill_manual(values = c("orange", "steelblue")) +
+  theme_minimal()
+
+```
+
+
+I wanted to know if there was conclusive proof through statistical tests that having lower income tax rates coreelated to bringing in more people. I wasnt sure where to start so i asked ai the same question and this is what we came up with. A mulitple linear regression model to test our theory. There's a lot of stuff about cleaning the data and setting up right which i let the ai do because i'd rather not interfere with forces i have a lesser understanding of, but essentially this;
+
+model_no_year <- lm(`Total Returns` ~ TaxRate + Region, data = merged_data)
+summary(model_no_year)
+
+-is the model. What we can gather from the model is that it is statistically significant (the p-value is 2.2e-16) and that about 46% (adjusted R-squared) of the reason migrants are coming to these states is because of the region and the income tax, givent the data we've put in.  
+
+
+```{r}
+# This code tests whether states with lower income tax rates attract more migrants,
+# controlling for region and year.
+
+# Load required libraries
+library(tidyverse)
+library(broom)
+
+# Load and clean migration data
+migration <- read_csv("GitHub/Jour405_Spring2025/final_project.rmd/immigration Data prime3.csv") %>%
+  mutate(across(contains("Returns"), ~as.numeric(gsub(",", "", .))))
+
+# Load and clean tax data
+tax_rates <- read_csv("GitHub/Jour405_Spring2025/final_project.rmd/Income_tax_pct - Sheet1.csv") %>%
+  pivot_longer(-State, names_to = "Year", values_to = "TaxRate") %>%
+  mutate(Year = as.numeric(Year),
+         TaxRate = as.numeric(TaxRate))
+
+# Merge datasets on State and Year
+merged_data <- migration %>%
+  inner_join(tax_rates, by = c("State", "Year"))
+
+# Run multiple linear regression: migration inflow ~ income tax rate + region + year
+model_no_year <- lm(`Total Returns` ~ TaxRate + Region, data = merged_data)
+summary(model_no_year)
+
+# Tidy output for easier reading
+tidy(model)
+
+```
+
+
+Thus far, we've established a few facts. The South is gaining people in numbers that overshadow those of other regions significantly. California and New York are the main contributors to the rise in population of states like Texas and Florida. On top of that texas and florida have no income tax while the other states do, which we've statistivally proven is drawing people into the states at some level. We've also noticed that states in the mid-atlantic, west, midwest, and northeast have for the most part stagnated when it comes to attracitng new migrants. 
+
+
+Over the course of this page you've proabbly fallen asleep. Then shame on you, because this stuff is actually really interesting. The implications of a increasing population in the south and a stagnating population of migrants in the middle of the country is important.
+
+In conclusion, we've revealed that southern states such as Texas and Florida are taking a significant number of migrants from places like California and New York. While these states and their respective regions aren't seeing a disaterously sharp decrease in people coming to their state, their immigration numbers are not moving. We've also seen that the amount of income that is taxed one people corellates in some respeCT to the number of people moving to said place. New York and California who have realtively high income taxes still hold a good amount of yearly migrants (except for new york who has faultered a bit more thatn california in that respect), but the bible belt is just steam rolling those once highly immigrated to states, and is taking their people from them..
+
+What more info do we need? What does this mean? Why is it important? What can we expect from this? What questions should we be asking and where should we look for answers?
+
+Great questions to ask, and you came to the guy with all the answers. First off, if we were to continue this, we'd need to get more data on the population sizes of each of these states and the total outflow to see if certain states, like Oklahoma or Georgia, are having their populations drastically impacted by Florida and Texas syphoning off their people. Having that infomration would also help deduce how much California and New York are actually struglling with the issue of losing people to these states. 
+
+As for what it means and why it's important, for a few reasons. The bible belt has been economically behind the northern states since Reconstruction, so it's interesting to see an influx of people, and not only people but companies, like Tesla, for instance, which is headquartered in Austin, Texas. If the South is going to see a revival in industry and people, that will be interesting because that might give it more leverage when it comes to politics. Florida, being a massively importnat state during presidential elections, is now a firm red state.
+
+
+What we ought to expect is a build-up in the south of infrastructure for these people. The South is going to change. Another thing I would investigate if I were to go further into this is who is moving to these places. Probably young people who can't afford to live in the city and California, but still want the nice weather and the cheap gas. Maybe these states that are losing people will make the changes that are making the South so attractive, like lowering or eliminating income tax. 
+
+If I where to continue purseing this I would talking to govoners or somebody in charge of bringing people into the state from everyone one of these states, at the very least the four that I've been focusing on. I'd probably talk to an economics guya about the implications of this migration to the south for the their economy and a politial anlayst to tell me what the implications are politically of having a very red and very populated south.
+
+
